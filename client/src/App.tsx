@@ -1,34 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './components/Home'
+import Navbar from './components/Navbar'
+import Settings from "./components/Settings";
+import Logout from "./components/Login";
+import AddStudent from "./components/AddStudent";
+import AddCourse from "./components/AddCourse";
+import { Courses } from "./components/Courses";
+import EditCourse from "./components/EditCourse";
+import DeleteCourse from "./components/DeleteCourse";
+import { Students } from "./components/Students";
+import EditStudent from "./components/EditStudent";
+import DeleteStudent from "./components/DeleteStudent"
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path='/home' element={<Home />}></Route>
+        <Route path='/settings' element={<Settings />}></Route>
+        <Route path='/' element={<Logout />}></Route>
+        <Route path='/add-student' element={<AddStudent />}></Route>
+        <Route path='/add-course' element={<AddCourse />}></Route>
+        <Route path='/add-course' element={<AddCourse />}></Route>
+        <Route path='/course' element={<Courses />}></Route>
+        <Route path='/course/:id' element={<EditCourse />}></Route>
+        <Route path='/delete/:id' element={<DeleteCourse />}></Route>
+        <Route path='/student' element={<Students/>}></Route>
+        <Route path='/student/:id' element={<EditStudent />}></Route>
+        <Route path='/change/:id' element={<DeleteStudent />}></Route>
+
+
+
+      </Routes>
+    </BrowserRouter>
+
   )
 }
 
